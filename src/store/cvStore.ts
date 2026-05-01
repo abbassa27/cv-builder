@@ -2,7 +2,7 @@ import { create } from "zustand"
 
 export interface CVData {
   personal: {
-    name: string; title: string; email: string
+    name: string; title: string; email: string;  photo: string
     phone: string; location: string; summary: string
   }
   experience: { id: string; company: string; role: string; from: string; to: string; current: boolean; description: string }[]
@@ -11,7 +11,7 @@ export interface CVData {
 }
 
 const defaultCV: CVData = {
-  personal: { name: "", title: "", email: "", phone: "", location: "", summary: "" },
+  personal: { name: "", title: "", email: "",  photo: "",  phone: "", location: "", summary: "" },
   experience: [], education: [], skills: [],
 }
 

@@ -4,15 +4,27 @@ export default function ClassicTemplate({ data, color = "#6366f1" }: { data: CVD
   const { personal, experience, education, skills } = data
   return (
     <div className="p-10 font-sans text-gray-900 text-sm" dir="rtl">
-      <div className="border-b-2 pb-4 mb-6" style={{ borderColor: color }}>
-        <h1 className="text-3xl font-bold" style={{ color }}>{personal.name || "اسمك الكامل"}</h1>
-        <p className="text-gray-500 text-lg mt-1">{personal.title || "المسمى الوظيفي"}</p>
-        <div className="flex gap-4 mt-2 text-xs text-gray-500 flex-wrap">
-          {personal.email && <span>✉ {personal.email}</span>}
-          {personal.phone && <span>📞 {personal.phone}</span>}
-          {personal.location && <span>📍 {personal.location}</span>}
+      <div className="border-b-2 pb-4 mb-6 flex justify-between items-start" style={{ borderColor: color }}>
+        {/* النص */}
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold" style={{ color }}>{personal.name || "اسمك الكامل"}</h1>
+          <p className="text-gray-500 text-lg mt-1">{personal.title || "المسمى الوظيفي"}</p>
+          <div className="flex gap-4 mt-2 text-xs text-gray-500 flex-wrap">
+            {personal.email    && <span>✉ {personal.email}</span>}
+            {personal.phone    && <span>📞 {personal.phone}</span>}
+            {personal.location && <span>📍 {personal.location}</span>}
+          </div>
         </div>
+        {/* الصورة الشخصية */}
+        {personal.photo && (
+          <img
+            src={personal.photo}
+            className="w-20 h-20 rounded-full object-cover border-2 mr-4 flex-shrink-0"
+            style={{ borderColor: color }}
+          />
+        )}
       </div>
+
       {personal.summary && (
         <div className="mb-6">
           <h2 className="text-base font-bold mb-2 pb-1" style={{ color, borderBottom: `2px solid ${color}` }}>الملخص المهني</h2>

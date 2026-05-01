@@ -2,8 +2,24 @@
 import { useRef, useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { useReactToPrint } from "react-to-print"
-import { useCVStore } from "@/store/cvStore"
+import { useCVStore, CVData } from "@/store/cvStore"
 import ClassicTemplate from "@/components/templates/ClassicTemplate"
+import ModernTemplate from "@/components/templates/ModernTemplate"
+import MinimalTemplate from "@/components/templates/MinimalTemplate"
+import CreativeTemplate from "@/components/templates/CreativeTemplate"
+import ElegantTemplate from "@/components/templates/ElegantTemplate"
+import BoldTemplate from "@/components/templates/BoldTemplate"
+import TimelineTemplate from "@/components/templates/TimelineTemplate"
+
+const TEMPLATES: Record<string, React.ComponentType<{ data: CVData; color?: string }>> = {
+  classic:  ClassicTemplate,
+  modern:   ModernTemplate,
+  minimal:  MinimalTemplate,
+  creative: CreativeTemplate,
+  elegant:  ElegantTemplate,
+  bold:     BoldTemplate,
+  timeline: TimelineTemplate,
+}
 
 export default function LivePreview() {
   const { data, templateId, color, font, isDirty } = useCVStore()
@@ -76,6 +92,8 @@ export default function LivePreview() {
     }
   }
 
+  const Template = TEMPLATES[templateId] ?? ClassicTemplate
+
   return (
     <div className="flex flex-col items-center gap-3 w-full overflow-y-auto py-4 px-4">
 
@@ -118,7 +136,7 @@ export default function LivePreview() {
 
       {/* Preview A4 */}
       <div ref={previewRef} className={`w-[210mm] min-h-[297mm] bg-white shadow-2xl ${font}`}>
-        <ClassicTemplate data={data} color={color} />
+        <Template data={data} color={color} />
       </div>
     </div>
   )

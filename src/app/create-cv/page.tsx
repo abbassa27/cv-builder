@@ -1,12 +1,47 @@
 "use client"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { useCVStore } from "@/store/cvStore"
+import { useCVStore, CVData } from "@/store/cvStore"
+import ClassicTemplate from "@/components/templates/ClassicTemplate"
+import ModernTemplate from "@/components/templates/ModernTemplate"
+import MinimalTemplate from "@/components/templates/MinimalTemplate"
+import CreativeTemplate from "@/components/templates/CreativeTemplate"
+import ElegantTemplate from "@/components/templates/ElegantTemplate"
+import BoldTemplate from "@/components/templates/BoldTemplate"
+import TimelineTemplate from "@/components/templates/TimelineTemplate"
+
+const PREVIEWS: Record<string, React.ComponentType<{ data: CVData; color?: string }>> = {
+  classic:  ClassicTemplate,
+  modern:   ModernTemplate,
+  minimal:  MinimalTemplate,
+  creative: CreativeTemplate,
+  elegant:  ElegantTemplate,
+  bold:     BoldTemplate,
+  timeline: TimelineTemplate,
+}
+
+const exampleData: CVData = {
+  personal: {
+    name: "محمد أحمد",
+    title: "مطور ويب",
+    email: "m@example.com",
+    phone: "0550000000",
+    location: "الجزائر",
+    summary: "مطور ويب متخصص في بناء تطبيقات حديثة وسريعة.",
+  },
+  experience: [{ id: "1", role: "مطور Full Stack", company: "شركة التقنية", from: "2022", to: "2024", current: false, description: "تطوير تطبيقات ويب باستخدام Next.js و TypeScript." }],
+  education:  [{ id: "1", degree: "بكالوريوس علوم الحاسوب", school: "جامعة وهران", year: "2022" }],
+  skills: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+}
 
 const templates = [
-  { id: "classic", label: "كلاسيك", desc: "تصميم نظيف واحترافي" },
-  { id: "modern",  label: "عصري",   desc: "تصميم حديث وجذاب" },
-  { id: "minimal", label: "بسيط",   desc: "تصميم مينيمال أنيق" },
+  { id: "classic",  label: "كلاسيك",   desc: "تصميم نظيف واحترافي" },
+  { id: "modern",   label: "عصري",     desc: "شريط جانبي ملوّن" },
+  { id: "minimal",  label: "بسيط",     desc: "تصميم مينيمال أنيق" },
+  { id: "creative", label: "إبداعي",   desc: "تصميم جريء ومميز" },
+  { id: "elegant",  label: "أنيق",     desc: "طابع راقٍ وكلاسيكي" },
+  { id: "bold",     label: "جريء",     desc: "ألوان قوية وعناوين كبيرة" },
+  { id: "timeline", label: "تايملاين", desc: "خبرة بشكل زمني" },
 ]
 
 const colors = [
@@ -15,9 +50,9 @@ const colors = [
 ]
 
 const fonts = [
-  { id: "font-sans",  label: "Geist",   desc: "عصري ونظيف" },
-  { id: "font-serif", label: "Serif",   desc: "كلاسيكي وأنيق" },
-  { id: "font-mono",  label: "Mono",    desc: "تقني ومميز" },
+  { id: "font-sans",  label: "Geist", desc: "عصري ونظيف" },
+  { id: "font-serif", label: "Serif", desc: "كلاسيكي وأنيق" },
+  { id: "font-mono",  label: "Mono",  desc: "تقني ومميز" },
 ]
 
 export default function CreateCVPage() {
@@ -28,13 +63,18 @@ export default function CreateCVPage() {
   const [selectedFont, setSelectedFont]         = useState("font-sans")
   const [startType, setStartType]               = useState<"empty"|"example">("empty")
 
- const handleStart = () => {
-  reset()
-  setTemplate(selectedTemplate)
-  setColor(selectedColor)
-  setFont(selectedFont)
-  router.push("/editor?from=create")
-}
+  const handleStart = () => {
+    reset()
+    setTemplate(selectedTemplate)
+    setColor(selectedColor)
+    setFont(selectedFont)
+    if (startType === "example") {
+      useCVStore.getState().loadCV(exampleData)
+    }
+    router.push("/editor?from=create")
+  }
+
+  const PreviewComponent = PREVIEWS[selectedTemplate] ?? ClassicTemplate
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 pt-20">
@@ -43,37 +83,14 @@ export default function CreateCVPage() {
         {/* Right: CV Preview */}
         <div className="lg:col-span-2 flex items-center justify-center">
           <div
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 border-4 transition-all duration-300"
-            style={{ borderColor: selectedColor }}
+            className="relative overflow-hidden rounded-2xl shadow-2xl border-4 transition-all duration-300"
+            style={{ borderColor: selectedColor, width: "320px", height: "452px" }}
           >
-            {/* Header */}
-            <div className="flex items-center gap-4 pb-4 border-b" style={{ borderColor: selectedColor + "40" }}>
-              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl">👤</div>
-              <div>
-                <div className="h-5 w-36 rounded mb-1" style={{ backgroundColor: selectedColor }}></div>
-                <div className="h-3 w-24 bg-gray-200 rounded"></div>
-                <div className="flex gap-3 mt-1">
-                  <div className="h-2 w-20 bg-gray-100 rounded"></div>
-                  <div className="h-2 w-16 bg-gray-100 rounded"></div>
-                </div>
-              </div>
-            </div>
-            {/* Sections */}
-            {["الخبرة المهنية", "التعليم", "المهارات"].map((s) => (
-              <div key={s} className="mt-4">
-                <div className="h-3 w-28 rounded mb-2 font-bold" style={{ backgroundColor: selectedColor }}></div>
-                <div className="space-y-1">
-                  <div className="h-2 w-full bg-gray-100 rounded"></div>
-                  <div className="h-2 w-4/5 bg-gray-100 rounded"></div>
-                  <div className="h-2 w-3/5 bg-gray-100 rounded"></div>
-                </div>
-              </div>
-            ))}
-            {/* Badge */}
-            <div className="mt-6 text-center">
-              <span className="text-xs text-white px-3 py-1 rounded-full" style={{ backgroundColor: selectedColor }}>
-                ✦ {templates.find(t => t.id === selectedTemplate)?.label}
-              </span>
+            <div
+              className={`absolute top-0 left-0 bg-white ${selectedFont}`}
+              style={{ width: "794px", transformOrigin: "top left", transform: "scale(0.403)", pointerEvents: "none" }}
+            >
+              <PreviewComponent data={exampleData} color={selectedColor} />
             </div>
           </div>
         </div>
@@ -90,8 +107,8 @@ export default function CreateCVPage() {
             <p className="text-sm font-semibold text-gray-700 mb-2">ابدأ بـ</p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { id: "empty", label: "فارغ", icon: "📄" },
-                { id: "example", label: "مثال", icon: "✨" },
+                { id: "empty",   label: "فارغ",  icon: "📄" },
+                { id: "example", label: "مثال",  icon: "✨" },
               ].map((t) => (
                 <button
                   key={t.id}
