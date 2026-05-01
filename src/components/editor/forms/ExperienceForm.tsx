@@ -37,7 +37,7 @@ export default function ExperienceForm() {
                 value={exp[f.key as keyof typeof exp] as string}
                 onChange={(e) => updateExperience(exp.id, f.key, e.target.value)}
                 placeholder={f.placeholder}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
               />
             </div>
           ))}
@@ -45,7 +45,7 @@ export default function ExperienceForm() {
             <label className="text-xs text-gray-500 block mb-1">الوصف</label>
             <textarea rows={3} value={exp.description}
               onChange={(e) => updateExperience(exp.id, "description", e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
             />
           </div>
           <label className="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">

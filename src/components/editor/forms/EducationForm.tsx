@@ -36,7 +36,7 @@ export default function EducationForm() {
                 value={edu[f.key as keyof typeof edu]}
                 onChange={(e) => updateEducation(edu.id, f.key, e.target.value)}
                 placeholder={f.placeholder}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
               />
             </div>
           ))}

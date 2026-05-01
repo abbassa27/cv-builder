@@ -58,7 +58,7 @@ export default function PersonalForm() {
             value={data.personal[f.key as keyof typeof data.personal]}
             onChange={(e) => updatePersonal(f.key, e.target.value)}
             placeholder={f.placeholder}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
           />
         </div>
       ))}
@@ -69,7 +69,7 @@ export default function PersonalForm() {
           value={data.personal.summary}
           onChange={(e) => updatePersonal("summary", e.target.value)}
           placeholder="اكتب نبذة مختصرة عن نفسك..."
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
+          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
         />
       </div>
     </div>
