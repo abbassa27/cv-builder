@@ -31,3 +31,12 @@
 1. **نسخ المستودع:**
    ```bash
    git clone [https://github.com/abbassa27/cv-builder.git](https://github.com/abbassa27/cv-builder.git)
+
+## 🤝 المساهمة (Contribution)
+
+إذا كان لديك اقتراح لتحسين القوالب أو إضافة ميزات جديدة، لا تتردد في فتح **Pull Request**. نحن نرحب بكل الأفكار التي ترفع من جودة المشروع.
+
+---
+
+**بواسطة:** [ماليك عباسة](https://abbassamalik.com)  
+*خبير تقني ومطور حلول رقمية*
