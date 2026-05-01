@@ -1,4 +1,14 @@
-# 🚀 CV Builder Pro | مولد السير الذاتية الاحترافي
+<div align="center">
+
+# **🚀 CV Builder Pro | مولد السير الذاتية الاحترافي**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
+[![Zustand](https://img.shields.io/badge/State--Management-Zustand-orange?style=flat)](https://zustand-demo.pmnd.rs/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+</div>
 
 تطبيق ويب متطور لبناء السير الذاتية التفاعلية، يهدف المشروع إلى تبسيط عملية إنشاء ملفات تعريف مهنية جذابة بلمسة فنية احترافية وتقنيات برمجية حديثة[cite: 1].
 
