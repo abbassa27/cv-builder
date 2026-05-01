@@ -24,11 +24,13 @@ export async function POST(req: Request) {
 
   const resume = await prisma.resume.create({
     data: {
-      userId: session.user.id,
-      title: body.title || "CV جديد",
-      templateId: body.templateId || "classic",
-      data: body.data || {},
-    },
+  userId: session.user.id,
+  title: body.title || "CV جديد",
+  templateId: body.templateId || "classic",
+  data: body.data || {},
+  color: body.color || "#6366f1",
+  font: body.font || "font-sans",
+},
   })
 
   return NextResponse.json(resume)

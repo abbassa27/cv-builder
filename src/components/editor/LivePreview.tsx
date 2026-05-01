@@ -6,7 +6,7 @@ import { useCVStore } from "@/store/cvStore"
 import ClassicTemplate from "@/components/templates/ClassicTemplate"
 
 export default function LivePreview() {
-  const { data, templateId, isDirty } = useCVStore()
+  const { data, templateId, color, font, isDirty } = useCVStore()
   const previewRef = useRef(null)
   const searchParams = useSearchParams()
   const [saving, setSaving] = useState(false)
@@ -28,7 +28,7 @@ export default function LivePreview() {
     setSaving(true)
     setMsg(null)
     try {
-      const payload = { title: data.personal.name || "CV جديد", templateId, data }
+      const payload = { title: data.personal.name || "CV جديد", templateId, data, color, font }
       let res
       if (savedId) {
         res = await fetch(`/api/cvs/${savedId}`, {
@@ -117,8 +117,8 @@ export default function LivePreview() {
       )}
 
       {/* Preview A4 */}
-      <div ref={previewRef} className="w-[210mm] min-h-[297mm] bg-white shadow-2xl">
-        <ClassicTemplate data={data} color="#6366f1" />
+      <div ref={previewRef} className={`w-[210mm] min-h-[297mm] bg-white shadow-2xl ${font}`}>
+        <ClassicTemplate data={data} color={color} />
       </div>
     </div>
   )

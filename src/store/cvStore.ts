@@ -79,5 +79,5 @@ export const useCVStore = create<CVStore>((set) => ({
   setColor: (color) => set({ color }),
   setFont: (font) => set({ font }),
   loadCV: (data) => set({ data, isDirty: false }),
-  reset: () => set({ data: defaultCV, isDirty: false }),
+  reset: () => set({ data: defaultCV, templateId: "classic", color: "#6366f1", font: "font-sans", isDirty: false }),
 }))

@@ -22,17 +22,18 @@ const fonts = [
 
 export default function CreateCVPage() {
   const router = useRouter()
-  const { setTemplate, setColor, setFont } = useCVStore()
+  const { setTemplate, setColor, setFont, reset } = useCVStore()
   const [selectedTemplate, setSelectedTemplate] = useState("classic")
   const [selectedColor, setSelectedColor]       = useState("#6366f1")
   const [selectedFont, setSelectedFont]         = useState("font-sans")
   const [startType, setStartType]               = useState<"empty"|"example">("empty")
 
  const handleStart = () => {
+  reset()
   setTemplate(selectedTemplate)
   setColor(selectedColor)
   setFont(selectedFont)
-  router.push("/editor")
+  router.push("/editor?from=create")
 }
 
   return (
