@@ -6,8 +6,12 @@ import { CVData } from "@/store/cvStore"
 export default async function PublicCVPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  const resume = await prisma.resume.findUnique({
-    where: { shareSlug: slug, isPublic: true },
+  // ✅ تغيير من findUnique إلى findFirst
+  const resume = await prisma.resume.findFirst({
+    where: { 
+      shareSlug: slug, 
+      isPublic: true 
+    }
   })
 
   if (!resume) return notFound()
@@ -15,7 +19,7 @@ export default async function PublicCVPage({ params }: { params: Promise<{ slug:
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <div className="w-[210mm] min-h-[297mm] bg-white shadow-2xl">
-        <ClassicTemplate data={resume.data as unknown as CVData} color="#6366f1" />
+        <ClassicTemplate data={resume.data as CVData} color="#6366f1" />
       </div>
     </div>
   )
