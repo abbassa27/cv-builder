@@ -1,7 +1,7 @@
 import { CVData } from "@/store/cvStore"
 
 export default function MinimalTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="p-12 font-sans text-sm text-gray-800" dir="rtl">
       <div className="mb-8 flex justify-between items-start">
@@ -15,11 +15,7 @@ export default function MinimalTemplate({ data, color = "#6366f1" }: { data: CVD
           </div>
         </div>
         {personal.photo && (
-          <img
-            src={personal.photo}
-            className="w-16 h-16 rounded-full object-cover flex-shrink-0 opacity-90"
-            style={{ border: `1px solid ${color}` }}
-          />
+          <img src={personal.photo} className="w-16 h-16 rounded-full object-cover flex-shrink-0 opacity-90" style={{ border: `1px solid ${color}` }} />
         )}
       </div>
       {personal.summary && (
@@ -58,11 +54,34 @@ export default function MinimalTemplate({ data, color = "#6366f1" }: { data: CVD
         </div>
       )}
       {skills.length > 0 && (
-        <div>
+        <div className="mb-7">
           <h2 className="text-xs uppercase tracking-widest mb-3" style={{ color }}>مهارات</h2>
           <div className="flex flex-wrap gap-3">
             {skills.map((skill) => (
               <span key={skill} className="text-xs border-b" style={{ borderColor: color }}>{skill}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      {languages.length > 0 && (
+        <div className="mb-7">
+          <h2 className="text-xs uppercase tracking-widest mb-3" style={{ color }}>لغات</h2>
+          <div className="flex flex-wrap gap-4">
+            {languages.map((lang) => (
+              <div key={lang.id} className="flex items-center gap-2">
+                <span className="text-xs font-medium">{lang.name}</span>
+                <span className="text-xs text-gray-400">— {lang.level}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {interests.length > 0 && (
+        <div>
+          <h2 className="text-xs uppercase tracking-widest mb-3" style={{ color }}>اهتمامات</h2>
+          <div className="flex flex-wrap gap-3">
+            {interests.map((interest) => (
+              <span key={interest} className="text-xs border-b" style={{ borderColor: color }}>{interest}</span>
             ))}
           </div>
         </div>

@@ -1,16 +1,12 @@
 import { CVData } from "@/store/cvStore"
 
 export default function ElegantTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="p-12 font-serif text-sm text-gray-800" dir="rtl">
       <div className="text-center mb-8 pb-6 border-b" style={{ borderColor: color }}>
         {personal.photo && (
-          <img
-            src={personal.photo}
-            className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2"
-            style={{ borderColor: color }}
-          />
+          <img src={personal.photo} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2" style={{ borderColor: color }} />
         )}
         <h1 className="text-3xl font-bold tracking-widest uppercase">{personal.name || "اسمك الكامل"}</h1>
         <p className="text-gray-500 mt-2 italic">{personal.title || "المسمى الوظيفي"}</p>
@@ -49,11 +45,34 @@ export default function ElegantTemplate({ data, color = "#6366f1" }: { data: CVD
         </div>
       )}
       {skills.length > 0 && (
-        <div>
+        <div className="mb-7">
           <h2 className="text-center text-xs uppercase tracking-widest mb-3" style={{ color }}>— المهارات —</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {skills.map((skill) => (
               <span key={skill} className="text-xs px-3 py-1 border rounded-full" style={{ borderColor: color, color }}>{skill}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      {languages.length > 0 && (
+        <div className="mb-7">
+          <h2 className="text-center text-xs uppercase tracking-widest mb-3" style={{ color }}>— اللغات —</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {languages.map((lang) => (
+              <div key={lang.id} className="text-center">
+                <p className="text-xs font-bold">{lang.name}</p>
+                <p className="text-xs text-gray-400 italic">{lang.level}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {interests.length > 0 && (
+        <div>
+          <h2 className="text-center text-xs uppercase tracking-widest mb-3" style={{ color }}>— الاهتمامات —</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {interests.map((interest) => (
+              <span key={interest} className="text-xs px-3 py-1 border rounded-full" style={{ borderColor: color, color }}>{interest}</span>
             ))}
           </div>
         </div>

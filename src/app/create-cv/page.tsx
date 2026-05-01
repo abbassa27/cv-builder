@@ -28,10 +28,17 @@ const exampleData: CVData = {
     phone: "0550000000",
     location: "الجزائر",
     summary: "مطور ويب متخصص في بناء تطبيقات حديثة وسريعة.",
+    photo: "https://i.pravatar.cc/150?img=8",
   },
   experience: [{ id: "1", role: "مطور Full Stack", company: "شركة التقنية", from: "2022", to: "2024", current: false, description: "تطوير تطبيقات ويب باستخدام Next.js و TypeScript." }],
   education:  [{ id: "1", degree: "بكالوريوس علوم الحاسوب", school: "جامعة وهران", year: "2022" }],
-  skills: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+  skills:     ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+  languages:  [
+    { id: "1", name: "العربية",  level: "اللغة الأم" },
+    { id: "2", name: "الإنجليزية", level: "متقدم" },
+    { id: "3", name: "الفرنسية", level: "متوسط" },
+  ],
+  interests:  ["البرمجة", "تصميم UI", "الذكاء الاصطناعي"],
 }
 
 const templates = [
@@ -84,11 +91,13 @@ export default function CreateCVPage() {
         <div className="lg:col-span-2 flex items-center justify-center">
           <div
             className="relative overflow-hidden rounded-2xl shadow-2xl border-4 transition-all duration-300"
-            style={{ borderColor: selectedColor, width: "320px", height: "452px" }}
+            style={{ borderColor: selectedColor, width: "480px", height: "678px" }}
+
           >
             <div
               className={`absolute top-0 left-0 bg-white ${selectedFont}`}
-              style={{ width: "794px", transformOrigin: "top left", transform: "scale(0.403)", pointerEvents: "none" }}
+              style={{ width: "794px", transformOrigin: "top left", transform: "scale(0.604)", pointerEvents: "none" }}
+
             >
               <PreviewComponent data={exampleData} color={selectedColor} />
             </div>

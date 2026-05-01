@@ -1,7 +1,7 @@
 import { CVData } from "@/store/cvStore"
 
 export default function BoldTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="font-sans text-sm text-gray-900 min-h-[297mm]" dir="rtl">
       <div className="p-8 flex justify-between items-center" style={{ backgroundColor: color }}>
@@ -10,13 +10,11 @@ export default function BoldTemplate({ data, color = "#6366f1" }: { data: CVData
           <p className="text-white/70 text-xl mt-1">{personal.title || "المسمى الوظيفي"}</p>
         </div>
         {personal.photo && (
-          <img
-            src={personal.photo}
-            className="w-24 h-24 rounded-full object-cover border-4 border-white/40 flex-shrink-0"
-          />
+          <img src={personal.photo} className="w-24 h-24 rounded-full object-cover border-4 border-white/40 flex-shrink-0" />
         )}
       </div>
       <div className="flex gap-0">
+        {/* المحتوى الرئيسي */}
         <div className="w-2/3 p-8 flex flex-col gap-6">
           {personal.summary && (
             <div>
@@ -36,7 +34,18 @@ export default function BoldTemplate({ data, color = "#6366f1" }: { data: CVData
               ))}
             </div>
           )}
+          {interests.length > 0 && (
+            <div>
+              <h2 className="text-2xl font-black mb-3" style={{ color }}>الاهتمامات</h2>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span key={interest} className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600">{interest}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
+        {/* الشريط الجانبي */}
         <div className="w-1/3 bg-gray-50 p-6 flex flex-col gap-6">
           <div>
             <h2 className="font-black text-sm mb-3" style={{ color }}>تواصل</h2>
@@ -64,6 +73,19 @@ export default function BoldTemplate({ data, color = "#6366f1" }: { data: CVData
               <div className="flex flex-col gap-1">
                 {skills.map((skill) => (
                   <span key={skill} className="text-xs px-2 py-1 rounded text-white" style={{ backgroundColor: color }}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {languages.length > 0 && (
+            <div>
+              <h2 className="font-black text-sm mb-3" style={{ color }}>اللغات</h2>
+              <div className="flex flex-col gap-2">
+                {languages.map((lang) => (
+                  <div key={lang.id} className="flex justify-between items-center">
+                    <span className="text-xs font-medium">{lang.name}</span>
+                    <span className="text-xs text-white px-2 py-0.5 rounded" style={{ backgroundColor: color }}>{lang.level}</span>
+                  </div>
                 ))}
               </div>
             </div>

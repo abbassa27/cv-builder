@@ -1,10 +1,9 @@
 import { CVData } from "@/store/cvStore"
 
 export default function CreativeTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="font-sans text-sm text-gray-900 min-h-[297mm]" dir="rtl">
-      {/* Header جريء */}
       <div className="p-10 text-white relative overflow-hidden" style={{ backgroundColor: color }}>
         <div className="absolute -left-10 -top-10 w-40 h-40 rounded-full bg-white/10" />
         <div className="absolute left-20 bottom-[-30px] w-24 h-24 rounded-full bg-white/10" />
@@ -19,10 +18,7 @@ export default function CreativeTemplate({ data, color = "#6366f1" }: { data: CV
             </div>
           </div>
           {personal.photo && (
-            <img
-              src={personal.photo}
-              className="w-24 h-24 rounded-full object-cover border-4 border-white/40 flex-shrink-0"
-            />
+            <img src={personal.photo} className="w-24 h-24 rounded-full object-cover border-4 border-white/40 flex-shrink-0" />
           )}
         </div>
       </div>
@@ -70,6 +66,31 @@ export default function CreativeTemplate({ data, color = "#6366f1" }: { data: CV
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <span key={skill} className="px-3 py-1 rounded-lg text-xs text-white font-semibold" style={{ backgroundColor: color }}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="flex gap-8">
+          {languages.length > 0 && (
+            <div className="flex-1">
+              <h2 className="font-black text-base mb-3" style={{ color }}>✦ اللغات</h2>
+              <div className="flex flex-col gap-2">
+                {languages.map((lang) => (
+                  <div key={lang.id} className="flex justify-between items-center">
+                    <span className="text-sm font-medium">{lang.name}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full text-white" style={{ backgroundColor: color }}>{lang.level}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {interests.length > 0 && (
+            <div className="flex-1">
+              <h2 className="font-black text-base mb-3" style={{ color }}>✦ الاهتمامات</h2>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span key={interest} className="px-3 py-1 rounded-lg text-xs bg-gray-50 border" style={{ borderColor: color, color }}>{interest}</span>
                 ))}
               </div>
             </div>

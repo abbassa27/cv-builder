@@ -1,17 +1,13 @@
 import { CVData } from "@/store/cvStore"
 
 export default function TimelineTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="p-10 font-sans text-sm text-gray-900" dir="rtl">
       <div className="flex justify-between items-start mb-8 pb-4 border-b-4" style={{ borderColor: color }}>
         <div className="flex items-center gap-4">
           {personal.photo && (
-            <img
-              src={personal.photo}
-              className="w-16 h-16 rounded-full object-cover flex-shrink-0 border-2"
-              style={{ borderColor: color }}
-            />
+            <img src={personal.photo} className="w-16 h-16 rounded-full object-cover flex-shrink-0 border-2" style={{ borderColor: color }} />
           )}
           <div>
             <h1 className="text-3xl font-black">{personal.name || "اسمك الكامل"}</h1>
@@ -47,7 +43,7 @@ export default function TimelineTemplate({ data, color = "#6366f1" }: { data: CV
           </div>
         </div>
       )}
-      <div className="flex gap-8">
+      <div className="flex gap-8 mb-8">
         {education.length > 0 && (
           <div className="flex-1">
             <h2 className="font-black text-base mb-3" style={{ color }}>التعليم</h2>
@@ -65,6 +61,31 @@ export default function TimelineTemplate({ data, color = "#6366f1" }: { data: CV
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span key={skill} className="px-3 py-1 rounded-full text-xs border font-medium" style={{ borderColor: color, color }}>{skill}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="flex gap-8">
+        {languages.length > 0 && (
+          <div className="flex-1">
+            <h2 className="font-black text-base mb-3" style={{ color }}>اللغات</h2>
+            <div className="flex flex-col gap-2">
+              {languages.map((lang) => (
+                <div key={lang.id} className="flex justify-between items-center border-r-2 pr-4" style={{ borderColor: color }}>
+                  <span className="font-medium text-xs">{lang.name}</span>
+                  <span className="text-xs text-gray-500">{lang.level}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {interests.length > 0 && (
+          <div className="flex-1">
+            <h2 className="font-black text-base mb-3" style={{ color }}>الاهتمامات</h2>
+            <div className="flex flex-wrap gap-2">
+              {interests.map((interest) => (
+                <span key={interest} className="px-3 py-1 rounded-full text-xs border font-medium" style={{ borderColor: color, color }}>{interest}</span>
               ))}
             </div>
           </div>

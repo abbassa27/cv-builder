@@ -1,18 +1,14 @@
 import { CVData } from "@/store/cvStore"
 
 export default function ModernTemplate({ data, color = "#6366f1" }: { data: CVData; color?: string }) {
-  const { personal, experience, education, skills } = data
+  const { personal, experience, education, skills, languages, interests } = data
   return (
     <div className="flex font-sans text-sm text-gray-900 min-h-[297mm]" dir="rtl">
       {/* شريط جانبي */}
       <div className="w-1/3 p-6 text-white flex flex-col gap-6" style={{ backgroundColor: color }}>
-        {/* الصورة */}
         {personal.photo && (
           <div className="flex justify-center">
-            <img
-              src={personal.photo}
-              className="w-24 h-24 rounded-full object-cover border-4 border-white/40"
-            />
+            <img src={personal.photo} className="w-24 h-24 rounded-full object-cover border-4 border-white/40" />
           </div>
         )}
         <div>
@@ -30,6 +26,29 @@ export default function ModernTemplate({ data, color = "#6366f1" }: { data: CVDa
             <div className="flex flex-col gap-1">
               {skills.map((skill) => (
                 <span key={skill} className="bg-white/20 rounded px-2 py-1 text-xs">{skill}</span>
+              ))}
+            </div>
+          </div>
+        )}
+        {languages.length > 0 && (
+          <div>
+            <h2 className="font-bold text-sm mb-2 border-b border-white/30 pb-1">اللغات</h2>
+            <div className="flex flex-col gap-2">
+              {languages.map((lang) => (
+                <div key={lang.id} className="flex justify-between items-center">
+                  <span className="text-xs">{lang.name}</span>
+                  <span className="text-xs bg-white/20 rounded px-2 py-0.5">{lang.level}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {interests.length > 0 && (
+          <div>
+            <h2 className="font-bold text-sm mb-2 border-b border-white/30 pb-1">الاهتمامات</h2>
+            <div className="flex flex-wrap gap-1">
+              {interests.map((interest) => (
+                <span key={interest} className="text-xs bg-white/20 rounded px-2 py-0.5">{interest}</span>
               ))}
             </div>
           </div>
