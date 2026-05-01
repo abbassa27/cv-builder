@@ -6,7 +6,6 @@ import { CVData } from "@/store/cvStore"
 export default async function PublicCVPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  // ✅ تغيير من findUnique إلى findFirst
   const resume = await prisma.resume.findFirst({
     where: { 
       shareSlug: slug, 
@@ -19,7 +18,8 @@ export default async function PublicCVPage({ params }: { params: Promise<{ slug:
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <div className="w-[210mm] min-h-[297mm] bg-white shadow-2xl">
-        <ClassicTemplate data={resume.data as CVData} color="#6366f1" />
+        {/* ✅ هذا السطر فقط يتغير */}
+        <ClassicTemplate data={resume.data as unknown as CVData} color="#6366f1" />
       </div>
     </div>
   )
