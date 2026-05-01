@@ -28,7 +28,7 @@ const exampleData: CVData = {
     phone: "0550000000",
     location: "الجزائر",
     summary: "مطور ويب متخصص في بناء تطبيقات حديثة وسريعة.",
-    photo: "https://i.pravatar.cc/150?img=8",
+    photo: "https://i.pravatar.cc/150?img=59",
   },
   experience: [{ id: "1", role: "مطور Full Stack", company: "شركة التقنية", from: "2022", to: "2024", current: false, description: "تطوير تطبيقات ويب باستخدام Next.js و TypeScript." }],
   education:  [{ id: "1", degree: "بكالوريوس علوم الحاسوب", school: "جامعة وهران", year: "2022" }],
