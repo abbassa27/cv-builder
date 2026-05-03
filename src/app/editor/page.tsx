@@ -1,4 +1,5 @@
 // # NEW FEATURE START
+export const dynamic = "force-dynamic"
 import { EditorLangProvider } from "@/components/editor/EditorLangContext"
 import EditorLayout from "@/components/editor/EditorLayout"
 // # NEW FEATURE END
