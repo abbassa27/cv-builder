@@ -61,7 +61,8 @@ export default function LivePreview() {
         templateId,
         data,
         color,
-        font
+        font,
+        experienceLayout,
       }
 
       let res

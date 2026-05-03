@@ -26,7 +26,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
   const resume = await prisma.resume.update({
     where: { id },
-    data: { title: body.title, templateId: body.templateId, data: body.data, color: body.color, font: body.font },
+    data: { title: body.title, templateId: body.templateId, data: body.data, color: body.color, font: body.font, experienceLayout: body.experienceLayout },
   })
 
   return NextResponse.json(resume)

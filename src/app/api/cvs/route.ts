@@ -30,6 +30,7 @@ export async function POST(req: Request) {
   data: body.data || {},
   color: body.color || "#6366f1",
   font: body.font || "font-sans",
+  experienceLayout: body.experienceLayout || "default",
 },
   })
 

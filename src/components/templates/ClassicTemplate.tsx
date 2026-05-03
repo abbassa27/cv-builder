@@ -166,6 +166,14 @@ export default function ClassicTemplate({
                 </div>
               ))}
             </div>
+          ) : experienceLayout === "traditional" ? (
+            experience.map((exp) => (
+              <div key={exp.id} className="mb-4">
+                <h3 className="font-bold uppercase text-sm">{exp.role || (isFR ? "Poste" : "المسمى الوظيفي")}</h3>
+                <p className="text-gray-500 text-xs">{exp.company} | {exp.from} — {exp.current ? (isFR ? "Présent" : "حتى الآن") : exp.to}</p>
+                {exp.description && <p className="text-gray-700 mt-1">{exp.description}</p>}
+              </div>
+            ))
           ) : (
             experience.map((exp) => (
               <div key={exp.id} className="mb-4">

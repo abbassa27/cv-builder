@@ -9,7 +9,7 @@ export default function EditorClient() {
   const searchParams = useSearchParams()
   const id = searchParams.get("id")
   const from = searchParams.get("from")
-  const { loadCV, reset, setColor, setFont } = useCVStore()
+  const { loadCV, reset, setColor, setFont, setExperienceLayout } = useCVStore()
 
   useEffect(() => {
     if (id) {
@@ -19,6 +19,7 @@ export default function EditorClient() {
           if (resume?.data) loadCV(resume.data)
           if (resume?.color) setColor(resume.color)
           if (resume?.font) setFont(resume.font)
+          if (resume?.experienceLayout) setExperienceLayout(resume.experienceLayout)
         })
     } else if (from === "create") {
       return
