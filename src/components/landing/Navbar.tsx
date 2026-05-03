@@ -25,22 +25,11 @@ export default function Navbar() {
           {/* يسار: لوغو + روابط */}
           <div className="flex items-center gap-4">
             <Link href="/" className="text-2xl font-black text-indigo-600">CV Builder</Link>
-            {backBtn ? (
+            {backBtn && (
               <Link href={backBtn.href}
                 className="text-sm text-gray-400 hover:text-indigo-600 font-medium transition flex items-center gap-1">
                 {backBtn.label}
               </Link>
-            ) : (
-              <>
-                <Link href="/templates"
-                  className="text-sm text-gray-500 hover:text-indigo-600 font-medium transition hidden sm:block">
-                  القوالب
-                </Link>
-                <Link href="/builder"
-                  className="text-sm text-gray-500 hover:text-indigo-600 font-medium transition hidden sm:block">
-                  أنشئ سيرتك
-                </Link>
-              </>
             )}
           </div>
 

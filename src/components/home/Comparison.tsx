@@ -81,7 +81,7 @@ export default function Comparison() {
 
         <div className="mt-10 text-center">
           <Link
-            href="/builder"
+            href="/create-cv"
             className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25"
           >
             ابدأ مجاناً
