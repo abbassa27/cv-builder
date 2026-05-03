@@ -13,9 +13,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={geist.className}>
-        <Navbar />
-        {children}
+      <head>
+        {/* 🔥 FIX: Mobile viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+
+      <body className={`${geist.className} antialiased`}>
+        {/* 🔥 FIX: Layout wrapper */}
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
+
+          <Navbar />
+
+          {/* 🔥 FIX: prevent navbar overlap */}
+          <main className="flex-1 pt-16">
+            {children}
+          </main>
+
+        </div>
       </body>
     </html>
   )
