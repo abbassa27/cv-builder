@@ -2,12 +2,11 @@
 
 import { useState } from "react"
 import { useCVStore } from "@/store/cvStore"
-import { THEME_COLORS, EXPERIENCE_LAYOUTS, type ExperienceLayoutId } from "@/lib/cviya-constants"
+import { THEME_COLORS, EXPERIENCE_LAYOUTS } from "@/lib/cviya-constants"
 
 export default function ColorLayoutPicker() {
-  const { color, setColor } = useCVStore()
+  const { color, setColor, experienceLayout, setExperienceLayout } = useCVStore()
   const [activePanel, setActivePanel] = useState<"colors" | "expLayout" | null>(null)
-  const [expLayout, setExpLayout] = useState<ExperienceLayoutId>("default")
 
   const togglePanel = (panel: "colors" | "expLayout") => {
     setActivePanel(activePanel === panel ? null : panel)
@@ -43,9 +42,9 @@ export default function ColorLayoutPicker() {
                 {EXPERIENCE_LAYOUTS.map((el) => (
                   <button
                     key={el.id}
-                    onClick={() => { setExpLayout(el.id); setActivePanel(null) }}
+                    onClick={() => { setExperienceLayout(el.id); setActivePanel(null) }}
                     className={`px-3 py-1.5 rounded-lg text-sm transition-all ${
-                      expLayout === el.id
+                      experienceLayout === el.id
                         ? "bg-indigo-600 text-white"
                         : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}

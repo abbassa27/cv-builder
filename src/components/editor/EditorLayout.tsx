@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import PersonalForm from "./forms/PersonalForm"
 import ExperienceForm from "./forms/ExperienceForm"
 import EducationForm from "./forms/EducationForm"
@@ -10,17 +11,27 @@ import InterestsForm from "./forms/InterestsForm"
 import LivePreview from "./LivePreview"
 import ColorLayoutPicker from "./ColorLayoutPicker"
 
+import { useCVStore } from "@/store/cvStore"
 import { useLangStore } from "@/store/langStore"
 import { useT } from "@/lib/i18n"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 
 export default function EditorLayout() {
   const [activeTab, setActiveTab] = useState("personal")
+  const searchParams = useSearchParams()
+  const setTemplate = useCVStore((s) => s.setTemplate)
 
   const lang = useLangStore((s) => s.lang)
   const t = useT()
 
   const isRTL = lang === "ar"
+
+  useEffect(() => {
+    const templateParam = searchParams.get("template")
+    if (templateParam) {
+      setTemplate(templateParam)
+    }
+  }, [searchParams, setTemplate])
 
   const tabs = [
     { id: "personal",   label: `👤 ${t.personal}` },

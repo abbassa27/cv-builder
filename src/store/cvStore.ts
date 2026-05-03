@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import type { ExperienceLayoutId } from "@/lib/cviya-constants"
 
 export interface CVData {
   personal: {
@@ -26,6 +27,7 @@ interface CVStore {
   templateId: string
   color: string
   font: string
+  experienceLayout: ExperienceLayoutId
   isDirty: boolean
   updatePersonal:    (field: string, value: string) => void
   addExperience:     () => void
@@ -44,6 +46,7 @@ interface CVStore {
   setTemplate:       (id: string) => void
   setColor:          (color: string) => void
   setFont:           (font: string) => void
+  setExperienceLayout: (layout: ExperienceLayoutId) => void
   loadCV:            (data: CVData) => void
   reset:             () => void
 }
@@ -53,6 +56,7 @@ export const useCVStore = create<CVStore>((set) => ({
   templateId: "classic",
   color: "#6366f1",
   font: "font-sans",
+  experienceLayout: "default",
   isDirty: false,
 
   updatePersonal: (field, value) =>
@@ -106,6 +110,7 @@ export const useCVStore = create<CVStore>((set) => ({
   setTemplate: (id) => set({ templateId: id }),
   setColor:    (color) => set({ color }),
   setFont:     (font) => set({ font }),
+  setExperienceLayout: (layout) => set({ experienceLayout: layout }),
   loadCV:      (data) => set({ data, isDirty: false }),
-  reset:       () => set({ data: defaultCV, templateId: "classic", color: "#6366f1", font: "font-sans", isDirty: false }),
+  reset:       () => set({ data: defaultCV, templateId: "classic", color: "#6366f1", font: "font-sans", experienceLayout: "default", isDirty: false }),
 }))
