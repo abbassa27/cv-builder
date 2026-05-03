@@ -110,7 +110,7 @@ export const useCVStore = create<CVStore>((set) => ({
   setTemplate: (id) => set({ templateId: id }),
   setColor:    (color) => set({ color }),
   setFont:     (font) => set({ font }),
-  setExperienceLayout: (layout) => set({ experienceLayout: layout }),
+  setExperienceLayout: (layout) => set({ experienceLayout: layout, isDirty: true }),
   loadCV:      (data) => set({ data, isDirty: false }),
   reset:       () => set({ data: defaultCV, templateId: "classic", color: "#6366f1", font: "font-sans", experienceLayout: "default", isDirty: false }),
 }))

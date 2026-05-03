@@ -1,14 +1,14 @@
-// # NEW FEATURE START
 export const dynamic = "force-dynamic"
+import { Suspense } from "react"
 import { EditorLangProvider } from "@/components/editor/EditorLangContext"
-import EditorLayout from "@/components/editor/EditorLayout"
-// # NEW FEATURE END
+import EditorClient from "./EditorClient"
 
 export default function Page() {
   return (
     <EditorLangProvider>
-      {/* FIX: replace EditorContent */}
-      <EditorLayout />
+      <Suspense>
+        <EditorClient />
+      </Suspense>
     </EditorLangProvider>
   )
 }
