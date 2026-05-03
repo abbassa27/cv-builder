@@ -1,9 +1,10 @@
 "use client"
 import Link from "next/link"
-import PersonalSection from "./sections/PersonalSection"
-import ExperienceSection from "./sections/ExperienceSection"
-import EducationSection from "./sections/EducationSection"
-import SkillsSection from "./sections/SkillsSection"
+
+import PersonalForm from "./forms/PersonalForm"
+import ExperienceForm from "./forms/ExperienceForm"
+import EducationForm from "./forms/EducationForm"
+import SkillsForm from "./forms/SkillsForm"
 
 export default function EditorForm() {
   return (
@@ -15,13 +16,18 @@ export default function EditorForm() {
         >
           ← الرئيسية
         </Link>
-        <h1 className="text-white font-bold text-xl">محرر السيرة الذاتية</h1>
-        <div className="w-20" /> {/* spacer للتوسيط */}
+
+        <h1 className="text-white font-bold text-xl">
+          محرر السيرة الذاتية
+        </h1>
+
+        <div className="w-20" />
       </div>
-      <PersonalSection />
-      <ExperienceSection />
-      <EducationSection />
-      <SkillsSection />
+
+      <PersonalForm />
+      <ExperienceForm />
+      <EducationForm />
+      <SkillsForm />
     </div>
   )
 }
