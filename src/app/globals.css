@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: 'Inter', 'Noto Sans Arabic', system-ui, sans-serif;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #eff6ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* TipTap Editor */
+.tiptap {
+  outline: none;
+  min-height: 100px;
+}
+
+.tiptap p {
+  margin: 0;
+}
+
+.tiptap ul {
+  list-style-type: disc;
+  padding-inline-start: 1.5em;
+}
+
+.tiptap ol {
+  list-style-type: decimal;
+  padding-inline-start: 1.5em;
+}
+
+.tiptap li p {
+  margin: 2px 0;
+}
+
+.tiptap em {
+  font-style: italic;
+}
+
+.tiptap strong {
+  font-weight: 700;
+}
+
+.tiptap u {
+  text-decoration: underline;
+}
+
+.tiptap s {
+  text-decoration: line-through;
+}
+
+.tiptap blockquote {
+  border-inline-start: 3px solid #e5e7eb;
+  padding-inline-start: 1em;
+  color: #6b7280;
+}
+
+.tiptap a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+/* CV Preview Styles */
+.cv-preview {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.cv-preview h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cv-preview h3 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cv-preview p {
+  font-size: 10px;
+  margin: 0;
+}
+
+.cv-preview ul {
+  list-style-type: disc;
+  padding-inline-start: 1.2em;
+  font-size: 9.5px;
+}
+
+.cv-preview li {
+  margin-bottom: 1px;
+}
+
+.cv-preview em {
+  font-style: italic;
+}
+
+.cv-preview strong {
+  font-weight: 600;
+}
+
+/* Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Print Styles */
+@media print {
+  .no-print { display: none !important; }
+  .cv-preview { font-size: 11px; }
 }

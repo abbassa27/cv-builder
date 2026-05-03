@@ -1,0 +1,176 @@
+import { ThemeColor, TemplateConfig } from './types';
+
+export const THEME_COLORS: ThemeColor[] = [
+  { name: 'Black', value: '#000000', bg: '#000000', text: '#ffffff', light: '#f5f5f5' },
+  { name: 'Slate', value: '#475569', bg: '#475569', text: '#ffffff', light: '#f1f5f9' },
+  { name: 'Gray', value: '#6b7280', bg: '#6b7280', text: '#ffffff', light: '#f3f4f6' },
+  { name: 'Zinc', value: '#71717a', bg: '#71717a', text: '#ffffff', light: '#f4f4f5' },
+  { name: 'Neutral', value: '#737373', bg: '#737373', text: '#ffffff', light: '#f5f5f5' },
+  { name: 'Stone', value: '#78716c', bg: '#78716c', text: '#ffffff', light: '#f5f5f4' },
+  { name: 'Blue', value: '#3b82f6', bg: '#3b82f6', text: '#ffffff', light: '#eff6ff' },
+  { name: 'Indigo', value: '#6366f1', bg: '#6366f1', text: '#ffffff', light: '#eef2ff' },
+  { name: 'Violet', value: '#8b5cf6', bg: '#8b5cf6', text: '#ffffff', light: '#f5f3ff' },
+  { name: 'Purple', value: '#a855f7', bg: '#a855f7', text: '#ffffff', light: '#faf5ff' },
+  { name: 'Fuchsia', value: '#d946ef', bg: '#d946ef', text: '#ffffff', light: '#fdf4ff' },
+  { name: 'Teal', value: '#14b8a6', bg: '#14b8a6', text: '#ffffff', light: '#f0fdfa' },
+  { name: 'Cyan', value: '#06b6d4', bg: '#06b6d4', text: '#ffffff', light: '#ecfeff' },
+  { name: 'Sky', value: '#0ea5e9', bg: '#0ea5e9', text: '#ffffff', light: '#f0f9ff' },
+  { name: 'Emerald', value: '#10b981', bg: '#10b981', text: '#ffffff', light: '#ecfdf5' },
+  { name: 'Green', value: '#22c55e', bg: '#22c55e', text: '#ffffff', light: '#f0fdf4' },
+  { name: 'Lime', value: '#84cc16', bg: '#84cc16', text: '#ffffff', light: '#f7fee7' },
+  { name: 'Red', value: '#ef4444', bg: '#ef4444', text: '#ffffff', light: '#fef2f2' },
+  { name: 'Orange', value: '#f97316', bg: '#f97316', text: '#ffffff', light: '#fff7ed' },
+  { name: 'Amber', value: '#f59e0b', bg: '#f59e0b', text: '#ffffff', light: '#fffbeb' },
+  { name: 'Rose', value: '#f43f5e', bg: '#f43f5e', text: '#ffffff', light: '#fff1f2' },
+  { name: 'Pink', value: '#ec4899', bg: '#ec4899', text: '#ffffff', light: '#fdf2f8' },
+  { name: 'Yellow', value: '#eab308', bg: '#eab308', text: '#ffffff', light: '#fefce8' },
+];
+
+export const TEMPLATES: TemplateConfig[] = [
+  {
+    id: 'classic',
+    name: 'Classic',
+    nameAr: 'كلاسيكي',
+    description: 'Clean single-column, great for traditional sectors',
+    descriptionAr: 'عمود واحد نظيف، مثالي للقطاعات التقليدية',
+    layout: 'single',
+    tag: 'Single',
+  },
+  {
+    id: 'modern-sidebar',
+    name: 'Modern Sidebar',
+    nameAr: 'شريط جانبي حديث',
+    description: 'Colored sidebar, perfect for tech & creative roles',
+    descriptionAr: 'شريط جانبي ملون، مثالي للتقنية والإبداع',
+    layout: 'left',
+    tag: 'Two-Col',
+  },
+  {
+    id: 'professional-header',
+    name: 'Professional Header',
+    nameAr: 'رأس احترافي',
+    description: 'Full-width header band for senior profiles',
+    descriptionAr: 'شريط رأسي كامل للملفات الشخصية العليا',
+    layout: 'header',
+    tag: 'Two-Col Header',
+  },
+  {
+    id: 'minimal',
+    name: 'Minimal',
+    nameAr: 'بسيط',
+    description: 'Clean minimalist design for designers & UX roles',
+    descriptionAr: 'تصميم بسيط ونظيف للمصممين وأدوار UX',
+    layout: 'left-header',
+    tag: 'Two-Col Header',
+  },
+  {
+    id: 'bold-sidebar',
+    name: 'Bold Sidebar',
+    nameAr: 'شريط جانبي جريء',
+    description: 'Dark left sidebar, ideal for marketing & sales',
+    descriptionAr: 'شريط جانبي داكن، مثالي للتسويق والمبيعات',
+    layout: 'right',
+    tag: 'Two-Col',
+  },
+  {
+    id: 'elegant-header',
+    name: 'Elegant Header',
+    nameAr: 'رأس أنيق',
+    description: 'Centered header with serif font for writers & academics',
+    descriptionAr: 'رأس مركزي بخط Serif للكتاب والأكاديميين',
+    layout: 'single',
+    tag: 'Single',
+  },
+];
+
+export const FONTS = [
+  { name: 'Figtree', label: 'Figtree', description: 'Modern and clean sans-serif font', descriptionAr: 'خط حديث ونظيف بدون حواف' },
+  { name: 'Inter', label: 'Inter', description: 'Professional sans-serif', descriptionAr: 'خط احترافي بدون حواف' },
+  { name: 'Georgia', label: 'Georgia', description: 'Classic serif font', descriptionAr: 'خط كلاسيكي بحواف' },
+  { name: 'Merriweather', label: 'Merriweather', description: 'Elegant serif', descriptionAr: 'خط أنيق بحواف' },
+];
+
+export const LAYOUT_OPTIONS = [
+  { id: 'single' as const, nameAr: 'عمود واحد', icon: '▮' },
+  { id: 'left' as const, nameAr: 'يسار', icon: '▮▮' },
+  { id: 'right' as const, nameAr: 'يمين', icon: '▮▮' },
+  { id: 'left-header' as const, nameAr: 'يسار+ر', icon: '▮▮' },
+  { id: 'right-header' as const, nameAr: 'يمين+ر', icon: '▮▮' },
+  { id: 'header' as const, nameAr: 'رأس', icon: '▮' },
+  { id: 'split' as const, nameAr: 'مقسّم', icon: '▮▮' },
+];
+
+export const LANGUAGE_LEVELS = ['Native', 'Fluent', 'Advanced', 'Professional', 'Intermediate', 'Beginner'];
+
+export const SAMPLE_RESUME = {
+  id: '',
+  firstName: 'أحمد',
+  lastName: 'المنصوري',
+  jobTitle: 'مهندس برمجيات',
+  subtitle: '',
+  photo: '',
+  contacts: [
+    { id: '1', icon: 'email', value: 'ahmed.mansouri@email.com', href: 'mailto:ahmed.mansouri@email.com' },
+    { id: '2', icon: 'phone', value: '0512345678', href: 'tel:+966512345678' },
+    { id: '3', icon: 'location', value: 'الرياض، المملكة العربية السعودية' },
+  ],
+  aboutMe: '<p>مهندس برمجيات طموح وذو خبرة واسعة في تطوير تطبيقات الويب والموبايل. أتمتع بمهارات قوية في <em>حل المشكلات</em> والعمل ضمن فريق. أبحث عن فرص جديدة لتطبيق معرفتي وإحداث تأثير إيجابي.</p>',
+  experiences: [
+    {
+      id: '1',
+      title: 'مهندس برمجيات أول',
+      company: 'شركة التقنية المتقدمة',
+      location: 'الرياض، السعودية',
+      duration: 'يناير 2023 - حتى الآن',
+      description: '<ul><li><p>قيادة فريق من <em>5 مطورين</em> لتطوير منصة إلكترونية تخدم أكثر من 50,000 مستخدم</p></li><li><p>تحسين أداء النظام بنسبة <em>72%</em> من خلال تحسين قواعد البيانات</p></li><li><p>تطوير واجهات برمجة RESTful APIs وGraphQL</p></li></ul>',
+    },
+    {
+      id: '2',
+      title: 'مطور واجهات أمامية',
+      company: 'حلول رقمية',
+      location: 'جدة، السعودية',
+      duration: 'مارس 2021 - ديسمبر 2022',
+      description: '<ul><li><p>تطوير واجهات مستخدم تفاعلية باستخدام <em>React</em> وNext.js</p></li><li><p>تحسين تجربة المستخدم مما أدى إلى زيادة <em>معدل التحويل بنسبة 35%</em></p></li><li><p>المشاركة في مراجعات الكود وتوجيه المطورين الجدد</p></li></ul>',
+    },
+    {
+      id: '3',
+      title: 'مطور تطبيقات',
+      company: 'ستارت أب تك',
+      location: 'الدمام، السعودية',
+      duration: 'يونيو 2019 - فبراير 2021',
+      description: '<ul><li><p>تطوير تطبيقات موبايل باستخدام <em>React Native</em></p></li><li><p>بناء بنية تحتية سحابية على <em>AWS</em></p></li><li><p>تنفيذ أتمتة الاختبارات بتغطية <em>88%</em></p></li></ul>',
+    },
+  ],
+  educations: [
+    {
+      id: '1',
+      institution: 'جامعة الملك سعود',
+      degree: 'بكالوريوس علوم الحاسب',
+      location: 'الرياض، السعودية',
+      duration: '2015 - 2019',
+      description: 'تخصص في هندسة البرمجيات والذكاء الاصطناعي مع مرتبة الشرف.',
+    },
+    {
+      id: '2',
+      institution: 'جامعة الملك عبدالعزيز',
+      degree: 'ماجستير علوم البيانات',
+      location: 'جدة، السعودية',
+      duration: '2020 - 2022',
+      description: 'بحث في تعلم الآلة وتحليل البيانات الضخمة.',
+    },
+  ],
+  skills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'GraphQL'],
+  languages: [
+    { id: '1', name: 'العربية', level: 'Native' },
+    { id: '2', name: 'English', level: 'Fluent' },
+    { id: '3', name: 'Français', level: 'Professional' },
+  ],
+  interests: ['البرمجة', 'القراءة', 'السفر', 'الرياضة', 'التصوير'],
+  certificates: [
+    { id: '1', name: 'AWS Certified Developer', issuer: 'Amazon Web Services' },
+    { id: '2', name: 'Google Cloud Professional', issuer: 'Google Cloud' },
+  ],
+  projects: [],
+  awards: [],
+  courses: [],
+};
