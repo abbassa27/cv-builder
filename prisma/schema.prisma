@@ -62,8 +62,9 @@ model Resume {
   title      String
   templateId String
   data       Json
-  color      String   @default("#6366f1")
-  font       String   @default("font-sans")
+  color            String   @default("#6366f1")
+  font             String   @default("font-sans")
+  experienceLayout String   @default("default")
   shareSlug  String?
   isPublic   Boolean  @default(false)
   createdAt  DateTime @default(now())

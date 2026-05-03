@@ -22,11 +22,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
+  const existing = await prisma.resume.findFirst({ where: { id, userId: session.user.id } })
+  if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 })
+
   const body = await req.json()
 
   const resume = await prisma.resume.update({
     where: { id },
-    data: { title: body.title, templateId: body.templateId, data: body.data, color: body.color, font: body.font },
+    data: { title: body.title, templateId: body.templateId, data: body.data, color: body.color, font: body.font, experienceLayout: body.experienceLayout },
   })
 
   return NextResponse.json(resume)
@@ -36,6 +39,9 @@ export async function DELETE(_: Request, { params }: { params: Promise<{ id: str
   const { id } = await params
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+
+  const existing = await prisma.resume.findFirst({ where: { id, userId: session.user.id } })
+  if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 })
 
   await prisma.resume.delete({ where: { id } })
 

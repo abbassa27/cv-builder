@@ -16,7 +16,7 @@ import { useLangStore } from "@/store/langStore"
 import { useT } from "@/lib/i18n"
 // # NEW FEATURE END
 
-const TEMPLATES: Record<string, React.ComponentType<{ data: CVData; color?: string }>> = {
+const TEMPLATES: Record<string, React.ComponentType<{ data: CVData; color?: string; experienceLayout?: string }>> = {
   classic:  ClassicTemplate,
   modern:   ModernTemplate,
   minimal:  MinimalTemplate,
@@ -27,7 +27,7 @@ const TEMPLATES: Record<string, React.ComponentType<{ data: CVData; color?: stri
 }
 
 export default function LivePreview() {
-  const { data, templateId, color, font, isDirty } = useCVStore()
+  const { data, templateId, color, font, isDirty, experienceLayout } = useCVStore()
   const previewRef = useRef(null)
   const searchParams = useSearchParams()
 
@@ -61,7 +61,8 @@ export default function LivePreview() {
         templateId,
         data,
         color,
-        font
+        font,
+        experienceLayout,
       }
 
       let res
@@ -184,7 +185,7 @@ export default function LivePreview() {
         // # NEW FEATURE END
         className={`w-[210mm] min-h-[297mm] bg-white shadow-2xl ${font}`}
       >
-        <Template data={data} color={color} />
+        <Template data={data} color={color} experienceLayout={experienceLayout} />
       </div>
     </div>
   )
