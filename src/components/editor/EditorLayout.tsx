@@ -8,6 +8,7 @@ import SkillsForm from "./forms/SkillsForm"
 import LanguagesForm from "./forms/LanguagesForm"
 import InterestsForm from "./forms/InterestsForm"
 import LivePreview from "./LivePreview"
+import ColorLayoutPicker from "./ColorLayoutPicker"
 
 import { useLangStore } from "@/store/langStore"
 import { useT } from "@/lib/i18n"
@@ -66,6 +67,7 @@ export default function EditorLayout() {
               {activeTab === "languages"  && <LanguagesForm />}
               {activeTab === "interests"  && <InterestsForm />}
             </div>
+            <ColorLayoutPicker />
           </div>
 
           {/* Preview LEFT */}
@@ -105,6 +107,7 @@ export default function EditorLayout() {
               {activeTab === "languages"  && <LanguagesForm />}
               {activeTab === "interests"  && <InterestsForm />}
             </div>
+            <ColorLayoutPicker />
           </div>
 
           {/* Preview RIGHT */}
